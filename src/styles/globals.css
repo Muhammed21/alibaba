@@ -7,12 +7,12 @@
 
 @font-face {
   font-family: "Edo";
-  src: url("/alibaba/public/_fonts/Edo.ttf") format("truetype");
+  src: url("/_fonts/Edo.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Montserrat";
-  src: url("/alibaba/public/_fonts/Montserrat-Bold.otf") format("opentype");
+  src: url("/_fonts/Montserrat-Bold.otf") format("opentype");
 }
 
 @theme inline {
