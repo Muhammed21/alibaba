@@ -12,11 +12,12 @@ export const Card = ({ variant = "simple", className }: CardProps) => {
 
   switch (variant) {
     case "simple":
-      cardSize = "w-full h-[290px]";
+      cardSize = "w-full h-height-card";
       variantTheme = cardSize + " " + "bg-white/50 rounded-md";
       break;
     case "double":
-      cardSize = "w-full h-[290px] col-span-2";
+      cardSize =
+        "w-full h-32 md:h-height-card col-span-2 sm:col-span-3 md:col-span-2";
       variantTheme = cardSize + " " + "bg-white/50 rounded-md";
       break;
   }

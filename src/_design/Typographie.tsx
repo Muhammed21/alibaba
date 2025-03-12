@@ -1,10 +1,11 @@
 import { Boolean } from "@/_types/boolean_type";
 import { String } from "@/_types/string_type";
+import { VariantTypography } from "@/_types/typo_variant";
 import clsx from "clsx";
 
 interface TypographieProps {
   children: React.ReactNode;
-  variant: "h1" | "h2" | "h3" | "h4";
+  variant: VariantTypography;
   fontFamily: "Edo" | "Montserrat" | "Inter";
   isBold?: Boolean;
   color?: "white" | "gray";
@@ -43,9 +44,11 @@ export const Typographie = ({
       fontFamilySwitcher = "font-edo";
       break;
     case "Montserrat":
-      isBold
-        ? (fontFamilySwitcher = "font-montserrat-bold")
-        : (fontFamilySwitcher = "font-montserrat-light font-medium");
+      if (isBold) {
+        fontFamilySwitcher = "font-montserrat-bold";
+      } else {
+        fontFamilySwitcher = "font-montserrat-light font-medium";
+      }
       break;
     case "Inter":
       fontFamilySwitcher = "font-inter";

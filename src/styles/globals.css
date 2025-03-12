@@ -11,15 +11,38 @@
   src: url("/_fonts/Montserrat-Bold.otf") format("opentype");
 }
 
+/* SCROLLBARR */
+
+body::-webkit-scrollbar {
+  width: 14px;
+}
+
+body::-webkit-scrollbar:hover {
+  cursor: pointer;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border: 5px solid var(--background);
+}
+
+/* FIN SCROLLBARR */
+
 :root {
   --background: #000000;
   --gray-card: #5a5a5a;
   --primary: #e6bb6b;
 
   --h1: clamp(50px, 5.729vw, 110px);
-  --h2: 64px;
+  --h2: clamp(32px, 3.333vw, 64px);
   --h3: 14px;
   --subtitle: 12px;
+
+  --card-height: clamp(100px, 15.104vw, 290px);
 }
 
 @theme inline {
@@ -34,8 +57,10 @@
   --spacing-h1: calc(var(--h1) - 5px);
   --spacing-h2: calc(var(--h2) - 5px);
   --spacing-h3: calc(var(--h3) - 5px);
-  --spacing-subtitle: calc(var(--subtitle) - 2px);
+  --spacing-subtitle: calc(var(--subtitle) + 8px);
+
   --spacing-200: clamp(0px, 10.417vw, 200px);
+  --spacing-height-card: var(--card-height);
 
   --font-edo: "Edo", sans-serif;
   --font-montserrat-bold: "Montserrat", sans-serif;

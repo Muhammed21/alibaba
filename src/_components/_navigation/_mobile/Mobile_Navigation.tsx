@@ -1,27 +1,39 @@
 import { useToggle } from "@/_context/Toogle_Menu";
-import { IoClose } from "react-icons/io5";
 import { CTA } from "@/_design/CTA";
 import { Top_Navigation_Bar } from "../Top_Navigation_Bar";
+import clsx from "clsx";
+import Image from "next/image";
 
 export const Mobile_Navigation = () => {
-  const { setToggle } = useToggle();
+  const { toggle, setToggle } = useToggle();
   return (
-    <section className="absolute top-0 left-0 z-50 bg-black flex flex-col items-center justify-center w-full h-screen">
+    <section
+      className={clsx(
+        toggle === 0 && "opacity-0 pointer-events-none",
+        "fixed transition-all duration-300 ease-in-out top-0 left-0 z-50 bg-black flex flex-col items-center justify-center w-full h-screen"
+      )}
+    >
       <div className="absolute top-0 left-0 w-full border border-b-white/15">
         <Top_Navigation_Bar />
       </div>
       {/* BURGER MENU BUTTON */}
       <button
-        className="absolute top-15 right-2 block text-white lg:hidden cursor-pointer"
+        className="absolute top-16 right-2 block text-white lg:hidden cursor-pointer"
         onClick={setToggle}
       >
-        <IoClose size={32} />
+        <Image
+          src="/_img/_svg/close.svg"
+          alt="close button"
+          width={24}
+          height={24}
+        />
       </button>
-      <div className="flex flex-col items-center justify-center gap-4">
+      <div className="flex flex-col items-center justify-center gap-12">
         <CTA
           variant="link"
-          textSize={14}
+          textSize={20}
           className="w-max"
+          href="#CARTE"
           color="white"
           isBold={false}
         >
@@ -29,7 +41,7 @@ export const Mobile_Navigation = () => {
         </CTA>
         <CTA
           variant="link"
-          textSize={14}
+          textSize={20}
           className="w-max"
           color="white"
           isBold={false}
@@ -38,7 +50,7 @@ export const Mobile_Navigation = () => {
         </CTA>
         <CTA
           variant="link"
-          textSize={14}
+          textSize={20}
           className="w-max"
           color="white"
           isBold={false}

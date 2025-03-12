@@ -1,7 +1,7 @@
 import { CTA } from "@/_design/CTA";
 import { Typographie } from "@/_design/Typographie";
 import { String } from "@/_types/string_type";
-import { timeTable } from "@/_utils/Close_Time_Table";
+import { closeHour, openHour, timeTable } from "@/_utils/Close_Time_Table";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { GoClock } from "react-icons/go";
@@ -21,7 +21,7 @@ export const Top_Navigation_Bar = () => {
 
       if (table.includes(currentDay)) {
         setIsOpen("Fermé");
-      } else if (currentHour >= 11 && currentHour < 24) {
+      } else if (currentHour >= openHour && currentHour < closeHour) {
         setIsOpen("Ouvert");
       } else {
         setIsOpen("Fermé");

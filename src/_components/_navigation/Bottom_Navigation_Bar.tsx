@@ -6,7 +6,7 @@ import { IoIosMenu } from "react-icons/io";
 import { Mobile_Navigation } from "./_mobile/Mobile_Navigation";
 
 export const Bottom_Navigation_Bar = () => {
-  const { toggle, setToggle } = useToggle();
+  const { setToggle } = useToggle();
   return (
     <div className="flex w-full justify-between items-center p-2 md:px-200 md:py-2.5 bg-black/50">
       <div className="w-full justify-start">
@@ -22,6 +22,7 @@ export const Bottom_Navigation_Bar = () => {
           variant="link"
           textSize={14}
           className="w-max"
+          href="#CARTE"
           color="white"
           isBold={false}
         >
@@ -65,7 +66,7 @@ export const Bottom_Navigation_Bar = () => {
       >
         <IoIosMenu size={32} />
       </button>
-      {toggle === 1 && <Mobile_Navigation />}
+      <Mobile_Navigation />
     </div>
   );
 };

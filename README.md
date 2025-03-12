@@ -1,40 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Ali Baba - Frontend & Backend
 
-## Getting Started
+Bienvenue sur le projet **Ali Baba** : un site web dynamique pour un restaurant de kebab, avec des horaires d'ouverture automatisés, des avis provenant de Google, et une base de données pour gérer les informations du restaurant.
 
-First, run the development server:
+Ce projet utilise **Next.js** pour le frontend, **Tailwind CSS** pour le design, **Prisma** et **Supabase** pour la gestion des données, et des API Google pour afficher les avis des clients.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Table des matières
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Installation](#installation)
+- [Structure du projet](#structure)
+- [Automatisation des horaires](#donnees-douverture-fermeture-a-adapter)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Installation
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Prérequis
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+Avant de commencer, vous devez avoir installé les outils suivants sur votre machine :
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js (version 14 ou supérieure)
+- Supabase account (pour la base de données)
+- Google API key (pour récupérer les avis via l'API Google)
 
-## Learn More
+### Étapes d'installation
 
-To learn more about Next.js, take a look at the following resources:
+1. Clonez le repository :
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+   ```bash
+   git clone https://github.com/Muhammed21/alibaba.git
+   cd alibaba
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```js
+   // Installe toute les dépendances
+   npm install
+   ```
 
-## Deploy on Vercel
+   ### Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```graphql
+   alibaba/
+   ├── prisma/                  # Schémas Prisma et migrations de la base de données
+   │   └── schema.prisma        # Définition du schéma de la base de données
+   ├── public/                  # Dossier public pour les images et autres ressources statiques
+   │   ├── _font/               # Polices personnalisées
+   │   └── _img/                # Images statiques utilisées sur le site
+   ├── src/                     # Code source principal
+   │   ├── _components/         # Composants réutilisables React
+   │   ├── _context/            # Contexte pour la gestion d'état global
+   │   ├── _design/             # Design (tailwind config, couleurs, etc.)
+   │   ├── _types/              # Types TypeScript pour les objets et données
+   │   ├── _utils/              # Utilitaires et fonctions génériques
+   │   ├── pages/               # Pages principales du site
+   │   │   ├── index.tsx        # Page d'accueil
+   │   └── styles/              # Styles globaux et Tailwind CSS
+   │       ├── globals.css      # Styles globaux
+   └── .env.local
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+   ### Données d'ouverture / fermeture à adapter
+
+   ```graphql
+   alibaba/
+   ├── .../
+   │
+   ├── src/
+   │   ├── _...
+   │   ├── _utils/
+   │       ├── Close_Time_Table.ts     # Ouvrir ce fichier
+   │   ├── _...
+   ```
+
+   ```ts
+   // Jour resto fermé
+   export const timeTable = ["mercredi"];
+
+   // Horaire d'ouverture
+   export const openHour = 11;
+
+   // Horaire de fermeture
+   export const closeHour = 24;
+   ```
