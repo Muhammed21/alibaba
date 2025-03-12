@@ -12,7 +12,10 @@ const SliderCards = () => {
   const swiperRef = useRef<SwiperCore | null>(null); // Use SwiperCore type
 
   useEffect(() => {
-    if (swiperRef.current?.params?.navigation && typeof swiperRef.current.params.navigation === 'object') {
+    if (
+      swiperRef.current?.params?.navigation &&
+      typeof swiperRef.current.params.navigation === "object"
+    ) {
       swiperRef.current.params.navigation.prevEl = prevButtonRef.current;
       swiperRef.current.params.navigation.nextEl = nextButtonRef.current;
       swiperRef.current.navigation.init();
@@ -21,7 +24,7 @@ const SliderCards = () => {
   }, []);
 
   return (
-    <div className="relative max-w-[1520px] px-[76px] gap-12 items-center w-full">
+    <div className="relative max-w-[1520px] px-4 sm:px-[76px] gap-12 items-center w-full">
       <Swiper
         spaceBetween={20}
         slidesPerView={1}
@@ -29,11 +32,11 @@ const SliderCards = () => {
           prevEl: prevButtonRef.current,
           nextEl: nextButtonRef.current,
         }}
-        modules={[Navigation, Autoplay]} 
+        modules={[Navigation, Autoplay]}
         loop={true}
         autoplay={{
-          delay: 2000, 
-          disableOnInteraction: false, 
+          delay: 2000,
+          disableOnInteraction: false,
         }}
         breakpoints={{
           500: {
@@ -50,7 +53,7 @@ const SliderCards = () => {
           },
         }}
         onSwiper={(swiper) => {
-          swiperRef.current = swiper; 
+          swiperRef.current = swiper;
         }}
       >
         <SwiperSlide>

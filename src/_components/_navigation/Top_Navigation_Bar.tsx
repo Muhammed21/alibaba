@@ -60,10 +60,11 @@ export const Top_Navigation_Bar = () => {
         variant="External_link"
         textSize={12}
         color="white"
+        href="https://www.google.com/maps?sca_esv=11a0cbbb8d287e03&si=APYL9btvhO6SAb8jF9HqTZMMa7vs_teLnZaEVrJZwRKFIIKjoWr0dCuVW-PFvP0AeoMwJ1iXvTvwuRWKibwRmssCzNUups9bVv6zl3kxPxCXafkSq1liUog%3D&uds=ABqPDvzh2Ji1Kqt-7EMvWRUQDfyqlF-_jbh08GYEE3HgnzS8EJ4nuj5MAAFN-6QPqU_x5G3l7iQrmV0rKm_no9agqr2xlodAhTY2_pq28IWHeNh2ypwtxDM&biw=1920&bih=953&dpr=1&um=1&ie=UTF-8&fb=1&gl=fr&sa=X&geocode=KTniDTz6j4tHMcgmOHMaJ-oe&daddr=13+Rue+du+Coll%C3%A8ge+Chappuisien,+74000+Annecy"
         icon={{ icon: LuMapPin }}
         className="flex sm:hidden"
       >
-        13 Rue du Collège Chapuisien...
+        13 Rue du Collège Chapu ...
       </CTA>
     </div>
   );
