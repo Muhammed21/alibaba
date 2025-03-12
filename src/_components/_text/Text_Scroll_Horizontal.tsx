@@ -82,7 +82,7 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
   );
 
   useAnimationFrame((t, delta) => {
-    let moveBy = velocity * (delta / 1000) * (velocityFactor.get() || 1);
+    const moveBy = velocity * (delta / 1000) * (velocityFactor.get() || 1);
     baseX.set(baseX.get() + moveBy);
   });
 
