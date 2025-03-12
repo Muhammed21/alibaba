@@ -1,5 +1,4 @@
 import { ApifyClient } from 'apify-client';
-import prisma from '@/_utils/_prisma/prisma';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 type ReviewItem = {
@@ -56,7 +55,7 @@ async function GET(req: NextApiRequest, res: NextApiResponse) {
       const languageItems = languageDataset.items as ReviewItem[]; 
       reviews[language] = languageItems;
 
-      for (const review of languageItems) {
+     /*  for (const review of languageItems) {
         await prisma.review.create({
           data: {
             name: review.name,
@@ -69,7 +68,7 @@ async function GET(req: NextApiRequest, res: NextApiResponse) {
             countryCode: review.countryCode,
           },
         });
-      }
+      } */
     }
 
     res.status(200).json(reviews); 

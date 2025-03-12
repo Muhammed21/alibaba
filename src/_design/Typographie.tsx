@@ -8,7 +8,7 @@ interface TypographieProps {
   variant: VariantTypography;
   fontFamily: "Edo" | "Montserrat" | "Inter";
   isBold?: Boolean;
-  color?: "white" | "gray";
+  color?: "white" | "gray" | "primary";
   className?: String;
 }
 
@@ -37,6 +37,12 @@ export const Typographie = ({
     case "h4":
       variantSwitcher = "text-subtitle leading-subtitle";
       break;
+    case "h5":
+      variantSwitcher = "text-h5 leading-h5";
+      break;
+    case "h6":
+      variantSwitcher = "text-h6 leading-h6";
+      break;
   }
 
   switch (fontFamily) {
@@ -61,6 +67,9 @@ export const Typographie = ({
       break;
     case "gray":
       colorSwitcher = "text-white/50";
+      break;
+    case "primary":
+      colorSwitcher = "text-primary";
       break;
   }
 
