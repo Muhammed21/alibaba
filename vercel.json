@@ -1,9 +1,8 @@
 {
-    "crons": [
-      {
-        "path": "/api/refresh-reviews",
-        "schedule": "*/2 * * * *"
-      }
-    ]
-  }
-  
+  "crons": [
+    {
+      "path": "/api/refresh-reviews",
+      "schedule": "0 0 * * 1"
+    }
+  ]
+}
