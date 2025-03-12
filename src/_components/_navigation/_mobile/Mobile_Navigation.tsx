@@ -18,13 +18,31 @@ export const Mobile_Navigation = () => {
         <IoClose size={32} />
       </button>
       <div className="flex flex-col items-center justify-center gap-4">
-        <CTA variant="link" textSize={14} className="w-max" isBold={false}>
+        <CTA
+          variant="link"
+          textSize={14}
+          className="w-max"
+          color="white"
+          isBold={false}
+        >
           Notre Carte
         </CTA>
-        <CTA variant="link" textSize={14} className="w-max" isBold={false}>
+        <CTA
+          variant="link"
+          textSize={14}
+          className="w-max"
+          color="white"
+          isBold={false}
+        >
           Nos Restaurant
         </CTA>
-        <CTA variant="link" textSize={14} className="w-max" isBold={false}>
+        <CTA
+          variant="link"
+          textSize={14}
+          className="w-max"
+          color="white"
+          isBold={false}
+        >
           Nous Rejoindre !
         </CTA>
       </div>
