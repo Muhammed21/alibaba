@@ -1,10 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
-:root {
-  --background: #000000;
-}
-
 @font-face {
   font-family: "Edo";
   src: url("/_fonts/Edo.ttf") format("truetype");
@@ -15,19 +11,30 @@
   src: url("/_fonts/Montserrat-Bold.otf") format("opentype");
 }
 
+:root {
+  --background: #000000;
+  --gray-card: #5a5a5a;
+  --primary: #e6bb6b;
+
+  --h1: clamp(50px, 5.729vw, 110px);
+  --h2: 64px;
+  --h3: 14px;
+  --subtitle: 12px;
+}
+
 @theme inline {
-  --color-background: var(--background);
+  --text-h1: var(--h1);
+  --text-h2: var(--h2);
+  --text-h3: var(--h3);
+  --text-subtitle: var(--subtitle);
 
-  --text-h1: clamp(50px, 5.729vw, 110px);
-  --text-h2: 64px;
-  --text-h3: 14px;
-  --text-subtitle: 12px;
+  --color-primary: var(--primary);
+  --color-gray-card: var(--gray-card);
 
-  --spacing-h1: clamp(45px, 5.469vw, 105px);
-  --spacing-h2: 105px;
-  --spacing-h3: 20px;
-  --spacing-subtitle: 15px;
-
+  --spacing-h1: calc(var(--h1) - 5px);
+  --spacing-h2: calc(var(--h2) - 5px);
+  --spacing-h3: calc(var(--h3) - 5px);
+  --spacing-subtitle: calc(var(--subtitle) - 2px);
   --spacing-200: clamp(0px, 10.417vw, 200px);
 
   --font-edo: "Edo", sans-serif;

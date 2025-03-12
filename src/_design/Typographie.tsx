@@ -1,12 +1,14 @@
+import { Boolean } from "@/_types/boolean_type";
+import { String } from "@/_types/string_type";
 import clsx from "clsx";
 
 interface TypographieProps {
   children: React.ReactNode;
   variant: "h1" | "h2" | "h3" | "h4";
   fontFamily: "Edo" | "Montserrat" | "Inter";
-  isBold?: boolean;
-  color: "white" | "gray";
-  className?: string;
+  isBold?: Boolean;
+  color?: "white" | "gray";
+  className?: String;
 }
 
 export const Typographie = ({
@@ -17,9 +19,9 @@ export const Typographie = ({
   isBold = true,
   className,
 }: TypographieProps) => {
-  let variantSwitcher: string = "";
-  let fontFamilySwitcher: string = "";
-  let colorSwitcher: string = "";
+  let variantSwitcher: String = "";
+  let fontFamilySwitcher: String = "";
+  let colorSwitcher: String = "";
 
   switch (Variant) {
     case "h1":
