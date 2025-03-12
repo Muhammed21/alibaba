@@ -4,10 +4,10 @@ import clsx from "clsx";
 
 interface TypographieProps {
   children: React.ReactNode;
-  variant: "h1" | "h2" | "h3" | "h4";
+  variant: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   fontFamily: "Edo" | "Montserrat" | "Inter";
   isBold?: Boolean;
-  color?: "white" | "gray";
+  color?: "white" | "gray" | "primary";
   className?: String;
 }
 
@@ -36,6 +36,12 @@ export const Typographie = ({
     case "h4":
       variantSwitcher = "text-subtitle leading-subtitle";
       break;
+    case "h5":
+      variantSwitcher = "text-h5 leading-h5";
+      break;
+    case "h6":
+      variantSwitcher = "text-h6 leading-h6";
+      break;
   }
 
   switch (fontFamily) {
@@ -58,6 +64,9 @@ export const Typographie = ({
       break;
     case "gray":
       colorSwitcher = "text-white/50";
+      break;
+    case "primary":
+      colorSwitcher = "text-primary";
       break;
   }
 
