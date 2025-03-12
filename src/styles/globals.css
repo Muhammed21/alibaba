@@ -15,10 +15,13 @@
   --background: #000000;
   --gray-card: #5a5a5a;
   --primary: #e6bb6b;
+  --bg-review: #242424;
 
   --h1: clamp(50px, 5.729vw, 110px);
   --h2: 64px;
   --h3: 14px;
+  --h5: 18px;
+  --h6: 16px;
   --subtitle: 12px;
 }
 
@@ -26,14 +29,19 @@
   --text-h1: var(--h1);
   --text-h2: var(--h2);
   --text-h3: var(--h3);
+  --text-h5: var(--h5);
+  --text-h6: var(--h6);
   --text-subtitle: var(--subtitle);
 
   --color-primary: var(--primary);
   --color-gray-card: var(--gray-card);
+  --color-bg-review: var(--bg-review);
 
   --spacing-h1: calc(var(--h1) - 5px);
   --spacing-h2: calc(var(--h2) - 5px);
   --spacing-h3: calc(var(--h3) - 5px);
+  --spacing-h5: calc(var(--h5) - 5px);
+  --spacing-h6: calc(var(--h6) + 4px);
   --spacing-subtitle: calc(var(--subtitle) - 2px);
   --spacing-200: clamp(0px, 10.417vw, 200px);
 
