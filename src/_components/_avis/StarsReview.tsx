@@ -1,16 +1,16 @@
 import React from "react";
-import Image from 'next/image';
+import Image from "next/image";
 
 const StarsReview = ({ numberOfStars }: { numberOfStars: number }) => {
   const numberOfEmptyStars = 5 - numberOfStars;
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-1">
       {[...Array(numberOfStars)].map((_, index) => (
         <Image
           key={index}
           alt="starFilled"
-          width={28}
-          height={28}
+          width={15}
+          height={15}
           src="/_img/_svg/starFilled.svg"
         />
       ))}
@@ -19,8 +19,8 @@ const StarsReview = ({ numberOfStars }: { numberOfStars: number }) => {
         <Image
           key={index}
           alt="starEmpty"
-          width={28}
-          height={28}
+          width={15}
+          height={15}
           src="/_img/_svg/starEmpty.svg"
         />
       ))}

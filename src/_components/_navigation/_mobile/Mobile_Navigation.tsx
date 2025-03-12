@@ -3,6 +3,7 @@ import { CTA } from "@/_design/CTA";
 import { Top_Navigation_Bar } from "../Top_Navigation_Bar";
 import clsx from "clsx";
 import Image from "next/image";
+import { CountrySwitch } from "@/_components/_country/Coutry";
 
 export const Mobile_Navigation = () => {
   const { toggle, setToggle } = useToggle();
@@ -57,6 +58,9 @@ export const Mobile_Navigation = () => {
         >
           Nous Rejoindre !
         </CTA>
+      </div>
+      <div className="absolute bottom-4 right-2.5 w-max h-max">
+        <CountrySwitch />
       </div>
     </section>
   );
