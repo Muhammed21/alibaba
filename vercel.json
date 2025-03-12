@@ -1,0 +1,9 @@
+{
+    "crons": [
+      {
+        "path": "/api/refresh-reviews",
+        "schedule": "*/2 * * * *"
+      }
+    ]
+  }
+  
