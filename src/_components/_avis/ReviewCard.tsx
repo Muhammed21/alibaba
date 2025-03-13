@@ -7,17 +7,29 @@ import { LuClock } from "react-icons/lu";
 import Review from "@/_types/review";
 import Link from "next/link";
 
-const ReviewCard = ({name, text, stars, picture, imagesReview, publishableDate, reviewUrl, countryCode} : Review) => {
+const ReviewCard = ({
+  name,
+  text,
+  stars,
+  picture,
+  imagesReview,
+  publishableDate,
+  reviewUrl,
+  countryCode,
+}: Review) => {
   const numberOfStars = stars;
 
-  const formatedDate = new Date(publishableDate).toLocaleDateString('fr-FR', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
+  const formatedDate = new Date(publishableDate).toLocaleDateString("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
   });
 
   return (
-    <Link href={reviewUrl} className="rounded-[10px] cursor-pointer group w-full h-fit p-[15px] hover:p-[14px] bg-gray-card hover:border border-primary">
+    <Link
+      href={reviewUrl}
+      className="rounded-[10px] cursor-pointer group w-full h-fit p-[15px] hover:p-[14px] bg-gray-card hover:border border-primary"
+    >
       <div className="w-full space-y-[20px]">
         <div className="flex w-full items-center justify-between">
           <div className="flex items-center gap-[10px]">
@@ -56,12 +68,6 @@ const ReviewCard = ({name, text, stars, picture, imagesReview, publishableDate, 
               >
                 ( {countryCode} )
               </Typographie>
-              {/* <Image
-                alt="profile picture"
-                width={16}
-                height={16}
-                src="/_img/_svg/map-pin.svg"
-              /> */}
             </div>
           </div>
           <div className="flex items-center gap-[7px]">
