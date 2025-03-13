@@ -2,6 +2,7 @@ import React from "react";
 import SliderCards from "./SliderCards";
 import { Typographie } from "@/_design/Typographie";
 
+
 const ReviewPage = () => {
   return (
     <section className=" bg-bg-review w-full h-max flex flex-col gap-20 py-16 items-center justify-center">

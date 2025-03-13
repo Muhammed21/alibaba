@@ -4,12 +4,20 @@ import { Typographie } from "@/_design/Typographie";
 import Image from "next/image";
 import { GoArrowDownRight } from "react-icons/go";
 import { LuClock } from "react-icons/lu";
+import Review from "@/_types/review";
+import Link from "next/link";
 
-const ReviewCard = () => {
-  const numberOfStars = 3;
+const ReviewCard = ({name, text, stars, picture, imagesReview, publishableDate, reviewUrl, countryCode} : Review) => {
+  const numberOfStars = stars;
+
+  const formatedDate = new Date(publishableDate).toLocaleDateString('fr-FR', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
 
   return (
-    <div className="rounded-[10px] cursor-pointer group w-full h-fit p-[15px] hover:p-[14px] bg-gray-card hover:border border-primary">
+    <Link href={reviewUrl} className="rounded-[10px] cursor-pointer group w-full h-fit p-[15px] hover:p-[14px] bg-gray-card hover:border border-primary">
       <div className="w-full space-y-[20px]">
         <div className="flex w-full items-center justify-between">
           <div className="flex items-center gap-[10px]">
@@ -17,7 +25,7 @@ const ReviewCard = () => {
               <Image
                 alt="profile picture"
                 fill
-                src="/_img/_png/profilePic.jpg"
+                src={picture}
                 className="absolute object-cover"
               />
             </div>
@@ -27,7 +35,7 @@ const ReviewCard = () => {
               variant="h5"
               color="white"
             >
-              Zeen Rai
+              {name}
             </Typographie>
           </div>
           <GoArrowDownRight
@@ -46,7 +54,7 @@ const ReviewCard = () => {
                 variant="h6"
                 color="primary"
               >
-                ( fr )
+                ( {countryCode} )
               </Typographie>
               {/* <Image
                 alt="profile picture"
@@ -65,7 +73,7 @@ const ReviewCard = () => {
               className="underline underline-offset-3"
               isBold={false}
             >
-              15 mars 2025
+              {formatedDate}
             </Typographie>
           </div>
           <Typographie
@@ -75,8 +83,7 @@ const ReviewCard = () => {
             color="white"
             isBold={false}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore
+            {text?.toString()}
           </Typographie>
           <div>
             <div className="overflow-hidden relative w-[200px] aspect-video rounded-[10px]">
@@ -84,13 +91,13 @@ const ReviewCard = () => {
                 alt="profile picture"
                 fill
                 className="absolute"
-                src="/_img/_png/imgTest.jpg"
+                src={imagesReview[0]}
               />
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
