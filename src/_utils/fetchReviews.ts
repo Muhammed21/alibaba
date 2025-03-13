@@ -17,11 +17,11 @@ export default async function fetchReviews() {
     token: process.env.APIFY_API_TOKEN,
   });
 
-  const establishmentUrl = "https://www.google.fr/maps/place/Ali+Baba+Kebab/";
+  const establishmentUrl = "https://www.google.fr/maps/place/Ali+Baba+Kebab/@45.899979,6.1240739,17z/data=!3m1!4b1!4m6!3m5!1s0x478b8ffa3c0de239:0x1eea271a733826c8!8m2!3d45.899979!4d6.1266488!16s%2Fg%2F1tdc4379?entry=ttu&g_ep=EgoyMDI1MDMxMC4wIKXMDSoASAFQAw%3D%3D"
 
   const input = {
     startUrls: [{ url: establishmentUrl }],
-    maxReviews: 10, // Ajuste le nombre si besoin
+    maxReviews: 10, 
     reviewsSort: 'newest',
     reviewsOrigin: 'all',
     personalData: true,
