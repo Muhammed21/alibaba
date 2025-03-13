@@ -47,7 +47,7 @@ export const CountrySwitch = ({ className, size = 10 }: CountryProps) => {
 
   const handleCountrySwitch = () => {
     setCountryId((prevID) => {
-      let newID = isIncreasing
+      const newID = isIncreasing
         ? prevID < 3
           ? prevID + 1
           : 1

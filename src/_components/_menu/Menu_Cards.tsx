@@ -58,6 +58,7 @@ export const MenuCards = () => {
         {data.length > 0 ? (
           data.map((item, id) => (
             <Card
+              key={id}
               variant={id === 0 ? "double" : "simple"}
               src={item.images}
               price={item.price}

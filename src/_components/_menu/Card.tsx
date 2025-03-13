@@ -8,6 +8,7 @@ import { useState } from "react";
 interface CardProps {
   variant: "simple" | "double";
   className?: String;
+  key: Number;
   src: String;
   price: Number;
   name: String;
@@ -16,6 +17,7 @@ interface CardProps {
 export const Card = ({
   variant = "simple",
   className,
+  key,
   src,
   price,
   name,
@@ -47,6 +49,7 @@ export const Card = ({
         "relative cursor-cell overflow-hidden group",
         { open: isOpen }
       )}
+      key={key}
       onClick={toggleOpen}
     >
       <div
