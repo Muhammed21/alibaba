@@ -1,20 +1,32 @@
-import { Number } from "@/_types/number_type";
-import { String } from "@/_types/string_type";
 import clsx from "clsx";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface CountryProps {
-  className?: String;
-  size?: Number;
+  className?: string;
+  size?: number;
 }
 
 export const CountrySwitch = ({ className, size = 10 }: CountryProps) => {
   const countries = ["fr", "tr", "en"];
+
   const [countryID, setCountryId] = useState(1);
   const [isIncreasing, setIsIncreasing] = useState(true);
 
-  let countryBorderSwitch: String = "";
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const localCountry = localStorage.getItem("countryID");
+      if (localCountry) {
+        const index = countries.indexOf(localCountry);
+        if (index !== -1) {
+          setCountryId(index + 1);
+        }
+      }
+    }
+  }, []);
+
+  let countryBorderSwitch = "";
+
   let sizeSwitcher: string = `w-${size}`;
 
   if (!["w-10", "w-12", "w-14"].includes(sizeSwitcher)) {
@@ -35,14 +47,15 @@ export const CountrySwitch = ({ className, size = 10 }: CountryProps) => {
 
   const handleCountrySwitch = () => {
     setCountryId((prevID) => {
-      let newID;
-      if (isIncreasing) {
-        newID = prevID < 3 ? prevID + 1 : 1;
-      } else {
-        newID = prevID > 1 ? (prevID = 1) : 3;
-      }
+      let newID = isIncreasing
+        ? prevID < 3
+          ? prevID + 1
+          : 1
+        : prevID > 1
+        ? prevID - 1
+        : 3;
 
-      if (newID === 3) setIsIncreasing(false);
+      setIsIncreasing(newID !== 3);
       if (newID === 1) setIsIncreasing(true);
 
       localStorage.setItem("countryID", countries[newID - 1]);
