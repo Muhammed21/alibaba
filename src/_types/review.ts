@@ -1,6 +1,6 @@
 export default interface Review {
     name: string;
-    text: JSON;
+    text: string[];
     stars: number;
     picture: string;
     imagesReview: string[];

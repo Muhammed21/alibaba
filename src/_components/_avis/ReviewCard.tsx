@@ -5,7 +5,7 @@ import Image from "next/image";
 import { GoArrowDownRight } from "react-icons/go";
 import { LuClock } from "react-icons/lu";
 import Review from "@/_types/review";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 const ReviewCard = ({
   name,
@@ -18,6 +18,7 @@ const ReviewCard = ({
   countryCode,
 }: Review) => {
   const numberOfStars = stars;
+  const router = useRouter();
 
   const formatedDate = new Date(publishableDate).toLocaleDateString("fr-FR", {
     day: "numeric",
@@ -26,8 +27,8 @@ const ReviewCard = ({
   });
 
   return (
-    <Link
-      href={reviewUrl}
+    <div
+      onClick={() => router.push(reviewUrl)}
       className="rounded-[10px] cursor-pointer group w-full h-fit p-[15px] hover:p-[14px] bg-gray-card hover:border border-primary"
     >
       <div className="w-full space-y-[20px]">
@@ -89,21 +90,33 @@ const ReviewCard = ({
             color="white"
             isBold={false}
           >
-            {text?.toString()}
+            {text.length > 0 ? text[1] : ""}
           </Typographie>
           <div>
-            <div className="overflow-hidden relative w-[200px] aspect-video rounded-[10px]">
-              <Image
-                alt="profile picture"
-                fill
-                className="absolute"
-                src={imagesReview[0]}
-              />
-            </div>
+            {imagesReview.length > 0 ? (
+              <div className="overflow-hidden relative w-[200px] aspect-video rounded-[10px]">
+                <Image
+                  alt="profile picture"
+                  fill
+                  className="absolute object-cover"
+                  src={imagesReview[0]}
+                />
+              </div>
+            ) : (
+              <Typographie
+                className="max-w-[314px] underline"
+                fontFamily="Montserrat"
+                variant="h6"
+                color="primary"
+                isBold={false}
+              >
+                Aucune image Disponible
+              </Typographie>
+            )}
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
