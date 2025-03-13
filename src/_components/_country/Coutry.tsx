@@ -1,18 +1,25 @@
+import { Number } from "@/_types/number_type";
 import { String } from "@/_types/string_type";
 import clsx from "clsx";
 import Image from "next/image";
 import { useState } from "react";
 
 interface CountryProps {
-  className?: string;
+  className?: String;
+  size?: Number;
 }
 
-export const CountrySwitch = ({ className }: CountryProps) => {
+export const CountrySwitch = ({ className, size = 10 }: CountryProps) => {
   const countries = ["fr", "tr", "en"];
   const [countryID, setCountryId] = useState(1);
   const [isIncreasing, setIsIncreasing] = useState(true);
 
   let countryBorderSwitch: String = "";
+  let sizeSwitcher: string = `w-${size}`;
+
+  if (!["w-10", "w-12", "w-14"].includes(sizeSwitcher)) {
+    sizeSwitcher = "w-10";
+  }
 
   switch (countryID) {
     case 1:
@@ -49,7 +56,8 @@ export const CountrySwitch = ({ className }: CountryProps) => {
       className={clsx(
         className,
         countryBorderSwitch,
-        "relative cursor-pointer border hover:opacity-80 active:scale-110 transition-all duration-200 ease-in-out rounded-full w-10 aspect-square"
+        sizeSwitcher,
+        "relative cursor-pointer border hover:opacity-80 active:scale-110 transition-all duration-200 ease-in-out rounded-full aspect-square"
       )}
     >
       <Image

@@ -25,3 +25,24 @@ model Review {
   countryCode      String   
 }
 
+model Days {
+  id              Int             @id @default(autoincrement())
+  day             String
+  informationId   Int    
+  information     Information     @relation(fields: [informationId], references: [id]) 
+}
+
+model Information {
+  id              Int             @id @default(autoincrement())
+  openH           Int
+  closeH          Int
+  days            Days[]
+}
+
+model Menu {
+    id              Int             @id @default(autoincrement())
+    name            String
+    images          String
+    price           Int
+}
+

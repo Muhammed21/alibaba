@@ -1,17 +1,41 @@
 import { CTA } from "@/_design/CTA";
 import { Typographie } from "@/_design/Typographie";
+import { Number } from "@/_types/number_type";
 import { String } from "@/_types/string_type";
-import { closeHour, openHour, timeTable } from "@/_utils/Close_Time_Table";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { GoClock } from "react-icons/go";
 import { LuMapPin } from "react-icons/lu";
 
+type DataProps = {
+  openH: Number;
+  closeH: Number;
+  days: {
+    day: String;
+  }[];
+};
+
 export const Top_Navigation_Bar = () => {
   const [isOpen, setIsOpen] = useState("");
+  const [info, setInfo] = useState<DataProps | null>(null);
+
+  const fetch_info_api = async () => {
+    const res = await fetch("/api/information");
+    const json = await res.json();
+
+    if (Array.isArray(json) && json.length > 0) {
+      setInfo(json[0]);
+    }
+  };
 
   useEffect(() => {
-    const verify_is_open = (table: String[]) => {
+    fetch_info_api();
+  }, []);
+
+  useEffect(() => {
+    if (!info) return;
+
+    const verify_is_open = (info: DataProps) => {
       const currentHour = new Date().getHours();
       const currentDay = new Date()
         .toLocaleString("fr-FR", {
@@ -19,17 +43,26 @@ export const Top_Navigation_Bar = () => {
         })
         .toLowerCase();
 
-      if (table.includes(currentDay)) {
-        setIsOpen("Fermé");
-      } else if (currentHour >= openHour && currentHour < closeHour) {
-        setIsOpen("Ouvert");
+      const todayInfo = info.days.find((day) => day.day.toLowerCase());
+
+      console.log(info);
+
+      if (todayInfo) {
+        const { openH, closeH } = info;
+        if (todayInfo.day === currentDay) {
+          setIsOpen("Fermé");
+        } else if (currentHour >= openH && currentHour < closeH) {
+          setIsOpen("Ouvert");
+        } else {
+          setIsOpen("Fermé");
+        }
       } else {
         setIsOpen("Fermé");
       }
     };
 
-    verify_is_open(timeTable);
-  }, [timeTable]);
+    verify_is_open(info);
+  }, [info]);
 
   return (
     <div className="flex w-full justify-center items-center gap-2.5 py-3.5 bg-black">
