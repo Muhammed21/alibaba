@@ -18,10 +18,13 @@ type DataProps = {
 export const Top_Navigation_Bar = () => {
   const [isOpen, setIsOpen] = useState("");
   const [info, setInfo] = useState<DataProps | null>(null);
+  const [isloading, setIsLoading] = useState(true);
 
   const fetch_info_api = async () => {
     const res = await fetch("/api/information");
     const json = await res.json();
+
+    console.log(json);
 
     if (Array.isArray(json) && json.length > 0) {
       setInfo(json[0]);
@@ -60,22 +63,29 @@ export const Top_Navigation_Bar = () => {
         setIsOpen("Fermé");
       }
     };
-
+    setIsLoading(false);
     verify_is_open(info);
   }, [info]);
 
   return (
     <div className="flex w-full justify-center items-center gap-2.5 py-3.5 bg-black">
-      <CTA
-        variant="link"
-        clickable={false}
-        textSize={12}
-        icon={{ icon: GoClock }}
-        className={clsx(isOpen === "Fermé" && "text-primary")}
-        color={isOpen === "Ouvert" ? "white" : undefined}
-      >
-        {isOpen} 11:00-00:00
-      </CTA>
+      {isloading ? (
+        <div className="flex gap-2.5 w-max h-max">
+          <div className="bg-white/10 w-5 h-5 rounded-full animate-pulse"></div>
+          <div className="bg-white/10 w-28 h-5 rounded-lg animate-pulse"></div>
+        </div>
+      ) : (
+        <CTA
+          variant="link"
+          clickable={false}
+          textSize={12}
+          icon={{ icon: GoClock }}
+          className={clsx(isOpen === "Fermé" && "text-primary")}
+          color={isOpen === "Ouvert" ? "white" : undefined}
+        >
+          {isOpen} 11:00-00:00
+        </CTA>
+      )}
       <Typographie variant="h4" color="white" fontFamily="Inter">
         |
       </Typographie>
