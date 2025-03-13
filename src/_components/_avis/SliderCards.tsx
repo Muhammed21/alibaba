@@ -5,14 +5,14 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 import Image from "next/image";
 import ReviewCard from "./ReviewCard";
-import Review from "@/_types/review"; 
+import Review from "@/_types/review";
 
 const SliderCards = () => {
   const prevButtonRef = useRef<HTMLDivElement>(null);
   const nextButtonRef = useRef<HTMLDivElement>(null);
   const swiperRef = useRef<SwiperCore | null>(null);
 
-  const [reviewContent, setReviewContent] = useState<Review[]>([]); 
+  const [reviewContent, setReviewContent] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -27,7 +27,9 @@ const SliderCards = () => {
         setReviewContent(data);
       } catch (err: unknown) {
         console.error(err);
-        setError(err instanceof Error ? err.message : "Une erreur est survenue");
+        setError(
+          err instanceof Error ? err.message : "Une erreur est survenue"
+        );
       } finally {
         setLoading(false);
       }
@@ -81,9 +83,9 @@ const SliderCards = () => {
               stars={item.stars}
               picture={item.picture}
               imagesReview={item.imagesReview}
-              publishableDate={item.publishableDate} 
-              reviewUrl={item.reviewUrl} 
-              countryCode={item.countryCode} 
+              publishableDate={item.publishableDate}
+              reviewUrl={item.reviewUrl}
+              countryCode={item.countryCode}
             />
           </SwiperSlide>
         ))}
@@ -93,14 +95,25 @@ const SliderCards = () => {
         ref={prevButtonRef}
         className="absolute hidden md:block top-1/2 left-0 transform -translate-y-1/2 cursor-pointer z-10"
       >
-        <Image alt="previous" width={55} height={55} src="/_img/_svg/nextButton.svg" />
+        <Image
+          alt="previous"
+          width={55}
+          height={55}
+          src="/_img/_svg/nextButton.svg"
+        />
       </div>
 
       <div
         ref={nextButtonRef}
         className="absolute top-1/2 right-0 transform -translate-y-1/2 cursor-pointer z-10"
       >
-        <Image className="transform hidden md:block rotate-180" alt="next" width={55} height={55} src="/_img/_svg/nextButton.svg" />
+        <Image
+          className="transform hidden md:block rotate-180"
+          alt="next"
+          width={55}
+          height={55}
+          src="/_img/_svg/nextButton.svg"
+        />
       </div>
     </div>
   );
