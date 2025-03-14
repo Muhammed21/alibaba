@@ -3,8 +3,10 @@ import { Navigations_Container } from "../_navigation/Navigations_Container";
 import Image from "next/image";
 import ScrollVelocity from "../_text/Text_Scroll_Horizontal";
 import { tagTable } from "@/_utils/Tag_Table";
+import { useTranslations } from "next-intl";
 
 export const Header = () => {
+  const t = useTranslations("header");
   return (
     <section className="relative flex flex-col w-full h-screen bg-[url('/_img/_png/alibaba-resto-img.png')] bg-cover bg-center">
       {/* DEBUT NAVIGATION CONTAINER _components */}
@@ -17,7 +19,7 @@ export const Header = () => {
         fontFamily="Edo"
         className="absolute -translate-2/4 left-2/4 top-2/4 max-w-[370px] w-max sm:max-w-[775px] text-center"
       >
-        Bienvenue chez Ali Baba kebab
+        {t("title")}
       </Typographie>
 
       <Image

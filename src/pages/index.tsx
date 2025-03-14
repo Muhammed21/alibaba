@@ -2,6 +2,7 @@ import ReviewPage from "@/_components/_avis/ReviewPage";
 import { CountrySwitch } from "@/_components/_country/Coutry";
 import { Header } from "@/_components/_header/Header";
 import { MenuCards } from "@/_components/_menu/Menu_Cards";
+import { GetStaticPropsContext } from "next";
 
 export default function Home() {
   return (
@@ -14,4 +15,12 @@ export default function Home() {
       </div>
     </section>
   );
+}
+
+export async function getStaticProps({locale}: GetStaticPropsContext) {
+  return {
+    props: {
+      messages: (await import(`../../messages/${locale}.json`)).default
+    }
+  };
 }
