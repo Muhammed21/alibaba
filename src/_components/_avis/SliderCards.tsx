@@ -81,7 +81,7 @@ const SliderCards = () => {
               name={item.name}
               text={item.text}
               stars={item.stars}
-              picture={item.picture}
+              picture={item.picture ? item.picture : "/_img/_png/ppBlank.png"}
               imagesReview={item.imagesReview}
               publishableDate={item.publishableDate}
               reviewUrl={item.reviewUrl}
@@ -93,7 +93,7 @@ const SliderCards = () => {
 
       <div
         ref={prevButtonRef}
-        className="absolute hidden md:block top-1/2 left-0 transform -translate-y-1/2 cursor-pointer z-10"
+        className="absolute hidden md:block top-1/2 left-0 transform -translate-y-1/2 cursor-pointer z-10 hover:opacity-70 transition-opacity ease-linear duration-200"
       >
         <Image
           alt="previous"
@@ -105,7 +105,7 @@ const SliderCards = () => {
 
       <div
         ref={nextButtonRef}
-        className="absolute top-1/2 right-0 transform -translate-y-1/2 cursor-pointer z-10"
+        className="absolute top-1/2 right-0 transform -translate-y-1/2 cursor-pointer z-10 hover:opacity-70 transition-opacity ease-linear duration-200"
       >
         <Image
           className="transform hidden md:block rotate-180"

@@ -19,6 +19,24 @@ const ReviewCard = ({
 }: Review) => {
   const numberOfStars = stars;
   const router = useRouter();
+  const { locale } = useRouter();
+
+  let translatedText;
+
+  switch (locale) {
+    case "fr":
+      translatedText = text[1];
+      break;
+    case "en":
+      translatedText = text[0];
+      break;
+    case "tr":
+      translatedText = text[2];
+      break;
+
+    default:
+      break;
+  }
 
   const formatedDate = new Date(publishableDate).toLocaleDateString("fr-FR", {
     day: "numeric",
@@ -43,7 +61,7 @@ const ReviewCard = ({
               />
             </div>
             <Typographie
-              fontFamily="Montserrat"
+              fontFamily="Edo"
               isBold
               variant="h5"
               color="white"
@@ -90,7 +108,11 @@ const ReviewCard = ({
             color="white"
             isBold={false}
           >
-            {text.length > 0 ? text[1] : ""}
+            {text.length > 0 
+              ? (translatedText && translatedText.length > 150 
+                  ? translatedText.slice(0, 150) + "..."
+                  : translatedText)
+              : ""}
           </Typographie>
           <div>
             {imagesReview.length > 0 ? (
@@ -104,7 +126,7 @@ const ReviewCard = ({
               </div>
             ) : (
               <Typographie
-                className="max-w-[314px] underline"
+                className="max-w-[314px] underline pt-8"
                 fontFamily="Montserrat"
                 variant="h6"
                 color="primary"
