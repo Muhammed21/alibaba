@@ -2,11 +2,13 @@ import { Typographie } from "@/_design/Typographie";
 import { Navigations_Container } from "../_navigation/Navigations_Container";
 import Image from "next/image";
 import ScrollVelocity from "../_text/Text_Scroll_Horizontal";
-import { tagTable } from "@/_utils/Tag_Table";
 import { useTranslations } from "next-intl";
 
 export const Header = () => {
   const t = useTranslations("header");
+
+  const translatedTags = t.raw("tags"); // Récupère l'array complet directement
+
   return (
     <section className="relative flex flex-col w-full h-screen bg-[url('/_img/_png/alibaba-resto-img.png')] bg-cover bg-center">
       {/* DEBUT NAVIGATION CONTAINER _components */}
@@ -32,7 +34,7 @@ export const Header = () => {
 
       <ScrollVelocity
         velocity={70}
-        texts={tagTable}
+        texts={translatedTags}
         parallaxClassName="absolute left-0 bottom-0"
       />
     </section>
