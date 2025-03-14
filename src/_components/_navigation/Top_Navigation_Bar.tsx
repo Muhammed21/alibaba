@@ -3,6 +3,7 @@ import { Typographie } from "@/_design/Typographie";
 import { Number } from "@/_types/number_type";
 import { String } from "@/_types/string_type";
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { GoClock } from "react-icons/go";
 import { LuMapPin } from "react-icons/lu";
@@ -19,6 +20,8 @@ export const Top_Navigation_Bar = () => {
   const [isOpen, setIsOpen] = useState("");
   const [info, setInfo] = useState<DataProps | null>(null);
   const [isloading, setIsLoading] = useState(true);
+
+  const tTop = useTranslations("header.navigation.top");
 
   const fetch_info_api = async () => {
     const res = await fetch("/api/information");
@@ -53,14 +56,14 @@ export const Top_Navigation_Bar = () => {
       if (todayInfo) {
         const { openH, closeH } = info;
         if (todayInfo.day === currentDay) {
-          setIsOpen("Fermé");
+          setIsOpen(tTop("close"));
         } else if (currentHour >= openH && currentHour < closeH) {
-          setIsOpen("Ouvert");
+          setIsOpen(tTop("open"));
         } else {
-          setIsOpen("Fermé");
+          setIsOpen(tTop("close"));
         }
       } else {
-        setIsOpen("Fermé");
+        setIsOpen(tTop("close"));
       }
     };
     setIsLoading(false);

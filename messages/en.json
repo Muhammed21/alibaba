@@ -1,18 +1,39 @@
 {
   "header": {
+    "navigation": {
+      "top": {
+        "open": "Opened",
+        "close": "Closed"
+      },
+      "bottom": {
+        "home": "Home",
+        "menu": "Our Menu",
+        "review": "Our review",
+        "allReview": "View all review"
+      }
+    },
     "title": "Welcome At Ali Baba kebab",
     "tags": [
-        "Kebab",
-        "Terrace",
-        "Halal",
-        "Lunch",
-        "Dinner",
-        "Open late",
-        "Drinks",
-        "Free Wi-Fi",
-        "Table service",
-        "Annecy",
-        "Turkey"
-      ]
+      "Kebab",
+      "Terrace",
+      "Halal",
+      "Lunch",
+      "Dinner",
+      "Open late",
+      "Drinks",
+      "Free Wi-Fi",
+      "Table service",
+      "Annecy",
+      "Turkey"
+    ]
+  },
+  "menu": {
+    "title": "Here is our menu",
+    "subtitle": "Craving authentic flavors? Discover our menu and indulge yourself!",
+    "error": "No card found"
+  },
+  "review": {
+    "title": "Here are Our Reviews",
+    "subtitle": "Discover our customers' reviews and their experience with us!"
   }
 }

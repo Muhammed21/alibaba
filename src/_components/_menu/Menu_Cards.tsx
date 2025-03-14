@@ -3,6 +3,7 @@ import { Card } from "./Card";
 import { useEffect, useState } from "react";
 import { Number } from "@/_types/number_type";
 import { String } from "@/_types/string_type";
+import { useTranslations } from "next-intl";
 import clsx from "clsx";
 
 type DataProps = {
@@ -14,6 +15,9 @@ type DataProps = {
 
 export const MenuCards = () => {
   const [data, setData] = useState<DataProps[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const t = useTranslations("menu");
 
   useEffect(() => {
     const fetch_all_images = async () => {
@@ -28,6 +32,7 @@ export const MenuCards = () => {
     };
 
     fetch_all_images();
+    setIsLoading(false);
   }, []);
   return (
     <section
@@ -36,7 +41,7 @@ export const MenuCards = () => {
     >
       <div className="w-full h-max flex flex-col gap-6 px-4 items-center justify-center">
         <Typographie variant="h2" color="white" fontFamily="Edo">
-          voici notre carte
+          {t("title")}
         </Typographie>
         <Typographie
           variant="h4"
@@ -44,35 +49,48 @@ export const MenuCards = () => {
           fontFamily="Montserrat"
           className="text-center"
         >
-          Envie de saveurs authentiques ? Découvrez notre carte et régalez-vous
-          !
+          {t("subtitle")}
         </Typographie>
       </div>
       {/* GRID DES CARTES */}
-      <div
-        className={clsx(
-          data.length > 0 && "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5",
-          " max-w-[1520px] w-full p-4 gap-2"
-        )}
-      >
-        {data.length > 0 ? (
-          data.map((item, id) => (
-            <Card
-              key={id}
-              variant={id === 0 ? "double" : "simple"}
-              src={item.images}
-              price={item.price}
-              name={item.name}
-            />
-          ))
-        ) : (
-          <div className="flex items-center justify-center w-full border border-dashed border-white/20 py-12 rounded-md">
-            <Typographie variant="h3" color="white" fontFamily="Montserrat">
-              Aucune carte trouvée
-            </Typographie>
-          </div>
-        )}
-      </div>
+      {isLoading ? (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 max-w-[1520px] w-full">
+          <div className="w-full col-span-2 h-height-card bg-white/10 rounded-lg animate-pulse"></div>
+          <div className="w-full h-height-card bg-white/10 rounded-lg animate-pulse"></div>
+          <div className="w-full h-height-card bg-white/10 rounded-lg animate-pulse"></div>
+          <div className="w-full h-height-card bg-white/10 rounded-lg animate-pulse"></div>
+          <div className="w-full h-height-card bg-white/10 rounded-lg animate-pulse"></div>
+          <div className="w-full h-height-card bg-white/10 rounded-lg animate-pulse"></div>
+          <div className="w-full h-height-card bg-white/10 rounded-lg animate-pulse"></div>
+          <div className="w-full h-height-card bg-white/10 rounded-lg animate-pulse"></div>
+          <div className="w-full h-height-card bg-white/10 rounded-lg animate-pulse"></div>
+        </div>
+      ) : (
+        <div
+          className={clsx(
+            data.length > 0 && "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5",
+            " max-w-[1520px] w-full p-4 gap-2"
+          )}
+        >
+          {data.length > 0 ? (
+            data.map((item, id) => (
+              <Card
+                key={id}
+                variant={id === 0 ? "double" : "simple"}
+                src={item.images}
+                price={item.price}
+                name={item.name}
+              />
+            ))
+          ) : (
+            <div className="flex items-center justify-center w-full border border-dashed border-white/20 bg-white/5 py-12 rounded-md">
+              <Typographie variant="h3" color="white" fontFamily="Montserrat">
+                {t("error")}
+              </Typographie>
+            </div>
+          )}
+        </div>
+      )}
     </section>
   );
 };

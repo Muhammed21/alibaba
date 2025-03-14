@@ -3,8 +3,10 @@ import { CTA } from "@/_design/CTA";
 import { Top_Navigation_Bar } from "../Top_Navigation_Bar";
 import clsx from "clsx";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export const Mobile_Navigation = () => {
+  const tBottom = useTranslations("header.navigation.bottom");
   const { toggle, setToggle } = useToggle();
   return (
     <section
@@ -37,7 +39,7 @@ export const Mobile_Navigation = () => {
           color="white"
           isBold={false}
         >
-          Notre Carte
+          {tBottom("home")}
         </CTA>
         <CTA
           variant="link"
@@ -46,7 +48,7 @@ export const Mobile_Navigation = () => {
           color="white"
           isBold={false}
         >
-          Nos Restaurant
+          {tBottom("menu")}
         </CTA>
         <CTA
           variant="link"
@@ -55,7 +57,7 @@ export const Mobile_Navigation = () => {
           color="white"
           isBold={false}
         >
-          Nous Rejoindre !
+          {tBottom("review")}
         </CTA>
       </div>
     </section>

@@ -1,20 +1,39 @@
 {
   "header": {
+    "navigation": {
+      "top": {
+        "open": "Ouvert",
+        "close": "Fermé"
+      },
+      "bottom": {
+        "home": "Accueil",
+        "menu": "Notre Carte",
+        "review": "Nos Avis",
+        "allReview": "Voir tous nos avis"
+      }
+    },
     "title": "Bienvenue chez Ali Baba kebab",
     "tags": [
-        "Kebab",
-        "Terrasse",
-        "Halal",
-        "Déjeuner",
-        "Dîner",
-        "Ouvert tard",
-        "Boissons",
-        "Wi-fi gratuit",
-        "Service de table",
-        "Annecy",
-        "Turquie"
-      ]
+      "Kebab",
+      "Terrasse",
+      "Halal",
+      "Déjeuner",
+      "Dîner",
+      "Ouvert tard",
+      "Boissons",
+      "Wi-fi gratuit",
+      "Service de table",
+      "Annecy",
+      "Turquie"
+    ]
+  },
+  "menu": {
+    "title": "voici notre carte",
+    "subtitle": "Envie de saveurs authentiques ? Découvrez notre carte et régalez-vous !",
+    "error": "Aucune carte trouvée"
+  },
+  "review": {
+    "title": "Voici Nos Avis",
+    "subtitle": "Découvrez les avis de nos clients et leur expérience avec nous !"
   }
-
- 
 }

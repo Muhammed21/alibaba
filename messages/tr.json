@@ -1,5 +1,17 @@
 {
   "header": {
+    "navigation": {
+      "top": {
+        "open": "Acik",
+        "close": "Kapali"
+      },
+      "bottom": {
+        "home": "Ana sayfa",
+        "menu": "Menümüz",
+        "review": "Yorumlarımız",
+        "allReview": "Tüm yorumlarımızı keşfet"
+      }
+    },
     "title": "Ali Baba kebab'a hos geldiniz",
     "tags": [
       "Kebap",
@@ -14,5 +26,14 @@
       "Annecy",
       "Türkiye"
     ]
+  },
+  "menu": {
+    "title": "Iste menümüz",
+    "subtitle": "Gerçek tatlar mı arıyorsunuz? Menümüzü keşfedin ve lezzetin tadını çıkarın!",
+    "error": "Menu bulunamadı"
+  },
+  "review": {
+    "title": "Iste yorumlariniz",
+    "subtitle": "Müşterilerimizin yorumlarını ve bizimle olan deneyimlerini keşfedin!"
   }
 }
