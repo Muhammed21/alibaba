@@ -47,9 +47,9 @@ const ReviewCard = ({
   return (
     <div
       onClick={() => router.push(reviewUrl)}
-      className="rounded-[10px] cursor-pointer group w-full h-fit p-[15px] hover:p-[14px] bg-gray-card hover:border border-primary"
+      className="rounded-[10px] cursor-pointer group w-full h-[350px] p-[15px] hover:p-[14px] bg-gray-card hover:border border-primary"
     >
-      <div className="w-full space-y-[20px]">
+      <div className="flex flex-col items-start justify-between w-full gap-[20px] h-full">
         <div className="flex w-full items-center justify-between">
           <div className="flex items-center gap-[10px]">
             <div className="w-[28px] aspect-square rounded-full overflow-hidden relative">
@@ -60,12 +60,7 @@ const ReviewCard = ({
                 className="absolute object-cover"
               />
             </div>
-            <Typographie
-              fontFamily="Edo"
-              isBold
-              variant="h5"
-              color="white"
-            >
+            <Typographie fontFamily="Edo" isBold variant="h5" color="white">
               {name}
             </Typographie>
           </div>
@@ -75,7 +70,7 @@ const ReviewCard = ({
           />
         </div>
 
-        <div className="space-y-[15px]">
+        <div className="flex flex-col gap-[15px] h-full">
           <div className="flex items-center justify-center gap-2 w-max">
             <StarsReview numberOfStars={numberOfStars} />
             <div className="flex items-center gap-[7px]">
@@ -108,13 +103,14 @@ const ReviewCard = ({
             color="white"
             isBold={false}
           >
-            {text.length > 0 
-              ? (translatedText && translatedText.length > 150 
-                  ? translatedText.slice(0, 150) + "..."
-                  : translatedText)
-              : ""}
+            {translatedText &&
+              (imagesReview.length > 0
+                ? translatedText.slice(0, 100) + "..."
+                : translatedText.length > 150
+                ? translatedText.slice(0, 150) + "..."
+                : translatedText)}
           </Typographie>
-          <div>
+          <div className="flex h-full">
             {imagesReview.length > 0 ? (
               <div className="overflow-hidden relative w-[200px] aspect-video rounded-[10px]">
                 <Image
@@ -126,7 +122,7 @@ const ReviewCard = ({
               </div>
             ) : (
               <Typographie
-                className="max-w-[314px] underline pt-8"
+                className="max-w-[314px] h-full content-end underline relative bottom-0"
                 fontFamily="Montserrat"
                 variant="h6"
                 color="primary"

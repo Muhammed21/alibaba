@@ -2,8 +2,8 @@
   "header": {
     "navigation": {
       "top": {
-        "open": "Acik",
-        "close": "Kapali"
+        "open": "Acık",
+        "close": "Kapalı"
       },
       "bottom": {
         "home": "Ana sayfa",
@@ -12,7 +12,7 @@
         "allReview": "Tüm yorumlarımızı keşfet"
       }
     },
-    "title": "Ali Baba kebab'a hos geldiniz",
+    "title": "Ali Baba Kebab'a hos geldiniz",
     "tags": [
       "Kebap",
       "Teras",
@@ -33,7 +33,7 @@
     "error": "Menu bulunamadı"
   },
   "review": {
-    "title": "Iste yorumlariniz",
+    "title": "Iste yorumlarımız",
     "subtitle": "Müşterilerimizin yorumlarını ve bizimle olan deneyimlerini keşfedin!"
   }
 }

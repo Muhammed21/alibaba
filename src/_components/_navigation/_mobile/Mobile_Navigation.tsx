@@ -35,7 +35,7 @@ export const Mobile_Navigation = () => {
           variant="link"
           textSize={20}
           className="w-max"
-          href="#CARTE"
+          href={`#${tBottom("home")}`}
           color="white"
           isBold={false}
         >
@@ -45,6 +45,7 @@ export const Mobile_Navigation = () => {
           variant="link"
           textSize={20}
           className="w-max"
+          href={`#${tBottom("menu")}`}
           color="white"
           isBold={false}
         >
@@ -54,6 +55,7 @@ export const Mobile_Navigation = () => {
           variant="link"
           textSize={20}
           className="w-max"
+          href={`#${tBottom("review")}`}
           color="white"
           isBold={false}
         >

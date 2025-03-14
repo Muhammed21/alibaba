@@ -11,7 +11,7 @@ export const Bottom_Navigation_Bar = () => {
   const tBottom = useTranslations("header.navigation.bottom");
   const { setToggle } = useToggle();
   return (
-    <div className="flex w-full justify-between items-center p-2 md:px-200 md:py-2.5 bg-black/50">
+    <div className="z-15 flex w-full justify-between items-center p-2 md:px-200 md:py-2.5 bg-black/50">
       <div className="w-full justify-start">
         <Image
           src={"/_img/_logo/Logo-AliBaba.png"}
@@ -25,7 +25,7 @@ export const Bottom_Navigation_Bar = () => {
           variant="link"
           textSize={14}
           className="w-max"
-          href="#CARTE"
+          href={`#${tBottom("home")}`}
           color="white"
           isBold={false}
         >
@@ -35,6 +35,7 @@ export const Bottom_Navigation_Bar = () => {
           variant="link"
           textSize={14}
           className="w-max"
+          href={`#${tBottom("menu")}`}
           color="white"
           isBold={false}
         >
@@ -44,6 +45,7 @@ export const Bottom_Navigation_Bar = () => {
           variant="link"
           textSize={14}
           className="w-max"
+          href={`#${tBottom("review")}`}
           color="white"
           isBold={false}
         >

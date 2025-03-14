@@ -20,14 +20,20 @@ export const Top_Navigation_Bar = () => {
   const [isOpen, setIsOpen] = useState("");
   const [info, setInfo] = useState<DataProps | null>(null);
   const [isloading, setIsLoading] = useState(true);
+  const [translatedText, setTranslatedText] = useState({ open: "", close: "" });
 
   const tTop = useTranslations("header.navigation.top");
+
+  useEffect(() => {
+    setTranslatedText({
+      open: tTop("open"),
+      close: tTop("close"),
+    });
+  }, [tTop]); // Met à jour la traduction après le premier rendu
 
   const fetch_info_api = async () => {
     const res = await fetch("/api/information");
     const json = await res.json();
-
-    console.log(json);
 
     if (Array.isArray(json) && json.length > 0) {
       setInfo(json[0]);
@@ -39,36 +45,33 @@ export const Top_Navigation_Bar = () => {
   }, []);
 
   useEffect(() => {
-    if (!info) return;
+    if (!info || !translatedText.open || !translatedText.close) return;
 
     const verify_is_open = (info: DataProps) => {
       const currentHour = new Date().getHours();
       const currentDay = new Date()
-        .toLocaleString("fr-FR", {
-          weekday: "long",
-        })
+        .toLocaleString("fr-FR", { weekday: "long" })
         .toLowerCase();
 
       const todayInfo = info.days.find((day) => day.day.toLowerCase());
 
-      console.log(info);
-
       if (todayInfo) {
         const { openH, closeH } = info;
         if (todayInfo.day === currentDay) {
-          setIsOpen(tTop("close"));
+          setIsOpen(translatedText.close);
         } else if (currentHour >= openH && currentHour < closeH) {
-          setIsOpen(tTop("open"));
+          setIsOpen(translatedText.open);
         } else {
-          setIsOpen(tTop("close"));
+          setIsOpen(translatedText.close);
         }
       } else {
-        setIsOpen(tTop("close"));
+        setIsOpen(translatedText.open);
       }
     };
+
     setIsLoading(false);
     verify_is_open(info);
-  }, [info]);
+  }, [info, translatedText]);
 
   return (
     <div className="flex w-full justify-center items-center gap-2.5 py-3.5 bg-black">
@@ -83,8 +86,8 @@ export const Top_Navigation_Bar = () => {
           clickable={false}
           textSize={12}
           icon={{ icon: GoClock }}
-          className={clsx(isOpen === "Fermé" && "text-primary")}
-          color={isOpen === "Ouvert" ? "white" : undefined}
+          className={clsx(isOpen === translatedText.close && "text-primary")}
+          color={isOpen === translatedText.open ? "white" : undefined}
         >
           {isOpen} 11:00-00:00
         </CTA>
@@ -96,7 +99,7 @@ export const Top_Navigation_Bar = () => {
         variant="External_link"
         textSize={12}
         color="white"
-        href="https://www.google.com/maps?sca_esv=11a0cbbb8d287e03&si=APYL9btvhO6SAb8jF9HqTZMMa7vs_teLnZaEVrJZwRKFIIKjoWr0dCuVW-PFvP0AeoMwJ1iXvTvwuRWKibwRmssCzNUups9bVv6zl3kxPxCXafkSq1liUog%3D&uds=ABqPDvzh2Ji1Kqt-7EMvWRUQDfyqlF-_jbh08GYEE3HgnzS8EJ4nuj5MAAFN-6QPqU_x5G3l7iQrmV0rKm_no9agqr2xlodAhTY2_pq28IWHeNh2ypwtxDM&biw=1920&bih=953&dpr=1&um=1&ie=UTF-8&fb=1&gl=fr&sa=X&geocode=KTniDTz6j4tHMcgmOHMaJ-oe&daddr=13+Rue+du+Coll%C3%A8ge+Chappuisien,+74000+Annecy"
+        href="https://www.google.com/maps..."
         icon={{ icon: LuMapPin }}
         className="hidden sm:flex"
       >
@@ -106,7 +109,7 @@ export const Top_Navigation_Bar = () => {
         variant="External_link"
         textSize={12}
         color="white"
-        href="https://www.google.com/maps?sca_esv=11a0cbbb8d287e03&si=APYL9btvhO6SAb8jF9HqTZMMa7vs_teLnZaEVrJZwRKFIIKjoWr0dCuVW-PFvP0AeoMwJ1iXvTvwuRWKibwRmssCzNUups9bVv6zl3kxPxCXafkSq1liUog%3D&uds=ABqPDvzh2Ji1Kqt-7EMvWRUQDfyqlF-_jbh08GYEE3HgnzS8EJ4nuj5MAAFN-6QPqU_x5G3l7iQrmV0rKm_no9agqr2xlodAhTY2_pq28IWHeNh2ypwtxDM&biw=1920&bih=953&dpr=1&um=1&ie=UTF-8&fb=1&gl=fr&sa=X&geocode=KTniDTz6j4tHMcgmOHMaJ-oe&daddr=13+Rue+du+Coll%C3%A8ge+Chappuisien,+74000+Annecy"
+        href="https://www.google.com/maps..."
         icon={{ icon: LuMapPin }}
         className="flex sm:hidden"
       >

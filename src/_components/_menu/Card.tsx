@@ -84,7 +84,7 @@ export const Card = ({
           {name}
         </Typographie>
         <Typographie variant="h3" color="primary" fontFamily="Montserrat">
-          {price} €
+          {price.toFixed(2)} €
         </Typographie>
       </div>
     </div>

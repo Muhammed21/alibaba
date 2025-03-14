@@ -6,11 +6,15 @@ import { useTranslations } from "next-intl";
 
 export const Header = () => {
   const t = useTranslations("header");
+  const tBottom = useTranslations("header.navigation.bottom");
 
   const translatedTags = t.raw("tags"); // Récupère l'array complet directement
 
   return (
-    <section className="relative flex flex-col w-full h-screen bg-[url('/_img/_png/alibaba-resto-img.png')] bg-cover bg-center">
+    <section
+      id={tBottom("home")}
+      className="relative flex flex-col w-full h-screen bg-[url('/_img/_png/alibaba-resto-img.png')] bg-cover bg-center"
+    >
       {/* DEBUT NAVIGATION CONTAINER _components */}
       <Navigations_Container />
       {/* FIN NAVIGATION CONTAINER _components */}
