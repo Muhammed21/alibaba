@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
 interface CountryProps {
@@ -9,24 +10,19 @@ interface CountryProps {
 
 export const CountrySwitch = ({ className, size = 10 }: CountryProps) => {
   const countries = ["fr", "tr", "en"];
+  const { locale, route, push } = useRouter();
 
   const [countryID, setCountryId] = useState(1);
-  const [isIncreasing, setIsIncreasing] = useState(true);
 
+  // 🟢 Met à jour le drapeau en fonction de la locale
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const localCountry = localStorage.getItem("countryID");
-      if (localCountry) {
-        const index = countries.indexOf(localCountry);
-        if (index !== -1) {
-          setCountryId(index + 1);
-        }
-      }
+    const index = countries.indexOf(locale as string);
+    if (index !== -1) {
+      setCountryId(index + 1);
     }
-  }, []);
+  }, [locale]);
 
   let countryBorderSwitch = "";
-
   let sizeSwitcher: string = `w-${size}`;
 
   if (!["w-10", "w-12", "w-14"].includes(sizeSwitcher)) {
@@ -47,18 +43,11 @@ export const CountrySwitch = ({ className, size = 10 }: CountryProps) => {
 
   const handleCountrySwitch = () => {
     setCountryId((prevID) => {
-      const newID = isIncreasing
-        ? prevID < 3
-          ? prevID + 1
-          : 1
-        : prevID > 1
-        ? prevID - 1
-        : 3;
+      const newID = prevID < 3 ? prevID + 1 : 1;
+      const newLocale = countries[newID - 1];
 
-      setIsIncreasing(newID !== 3);
-      if (newID === 1) setIsIncreasing(true);
+      push(route, route, { locale: newLocale });
 
-      localStorage.setItem("countryID", countries[newID - 1]);
       return newID;
     });
   };
