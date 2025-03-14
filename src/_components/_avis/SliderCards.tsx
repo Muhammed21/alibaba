@@ -6,10 +6,9 @@ import "swiper/swiper-bundle.css";
 import Image from "next/image";
 import ReviewCard from "./ReviewCard";
 import Review from "@/_types/review";
+import ReviewLoader from "./ReviewLoader";
 
 const SliderCards = () => {
-  const prevButtonRef = useRef<HTMLDivElement>(null);
-  const nextButtonRef = useRef<HTMLDivElement>(null);
   const swiperRef = useRef<SwiperCore | null>(null);
 
   const [reviewContent, setReviewContent] = useState<Review[]>([]);
@@ -43,14 +42,19 @@ const SliderCards = () => {
       swiperRef.current?.params?.navigation &&
       typeof swiperRef.current.params.navigation === "object"
     ) {
-      swiperRef.current.params.navigation.prevEl = prevButtonRef.current;
-      swiperRef.current.params.navigation.nextEl = nextButtonRef.current;
       swiperRef.current.navigation.init();
       swiperRef.current.navigation.update();
     }
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div className="relative max-w-[1520px] px-4 sm:px-[76px] gap-12 items-center w-full flex">
+        <ReviewLoader />
+        <ReviewLoader className="hidden md:block" />
+        <ReviewLoader className="hidden lg:block" />
+      </div>
+    );
   if (error) return <div className="text-white text-xl">{error}</div>;
 
   return (
@@ -58,10 +62,6 @@ const SliderCards = () => {
       <Swiper
         spaceBetween={20}
         slidesPerView={1}
-        navigation={{
-          prevEl: prevButtonRef.current,
-          nextEl: nextButtonRef.current,
-        }}
         modules={[Navigation, Autoplay]}
         loop={true}
         autoplay={{
@@ -91,8 +91,9 @@ const SliderCards = () => {
         ))}
       </Swiper>
 
+      {/* Previous Button */}
       <div
-        ref={prevButtonRef}
+        onClick={() => swiperRef.current?.slidePrev()}
         className="absolute hidden md:block top-1/2 left-0 transform -translate-y-1/2 cursor-pointer z-10 hover:opacity-70 transition-opacity ease-linear duration-200"
       >
         <Image
@@ -103,8 +104,9 @@ const SliderCards = () => {
         />
       </div>
 
+      {/* Next Button */}
       <div
-        ref={nextButtonRef}
+        onClick={() => swiperRef.current?.slideNext()}
         className="absolute top-1/2 right-0 transform -translate-y-1/2 cursor-pointer z-10 hover:opacity-70 transition-opacity ease-linear duration-200"
       >
         <Image
