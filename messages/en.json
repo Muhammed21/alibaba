@@ -35,5 +35,8 @@
   "review": {
     "title": "Here are Our Reviews",
     "subtitle": "Discover our customers' reviews and their experience with us!"
+  },
+  "footer": {
+    "title": "Website Built By Axis Studio"
   }
 }

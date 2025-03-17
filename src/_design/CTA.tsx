@@ -16,6 +16,7 @@ interface CTAProps {
   isBold?: Boolean;
   clickable?: Boolean;
   className?: String;
+  onClick?: () => void;
 }
 
 export const CTA = ({
@@ -29,6 +30,7 @@ export const CTA = ({
   isBold,
   clickable = true,
   className,
+  onClick
 }: CTAProps) => {
   let sizeTypo: VariantTypography;
   let iconSize = 0;
@@ -51,7 +53,7 @@ export const CTA = ({
   return (
     <a
       href={href}
-      onClick={(e) => disabled && e.preventDefault()}
+      onClick={disabled ? (e) => e.preventDefault() : onClick}
       target={variant === "External_link" ? "_blank" : "_self"}
       rel={variant === "External_link" ? "noopener noreferrer" : undefined}
       className={clsx(

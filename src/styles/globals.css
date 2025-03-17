@@ -62,7 +62,7 @@ body::-webkit-scrollbar-thumb {
 
   --spacing-h1: calc(var(--h1) - 5px);
   --spacing-h2: calc(var(--h2) - 5px);
-  --spacing-h3: calc(var(--h3) - 5px);
+  --spacing-h3: calc(var(--h3) + 5px);
   --spacing-subtitle: calc(var(--subtitle) + 8px);
   --spacing-h5: calc(var(--h5) - 5px);
   --spacing-h6: calc(var(--h6) + 4px);

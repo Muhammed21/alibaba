@@ -4,11 +4,13 @@ import Link from 'next/link';
 import React from 'react';
 import { SiUbereats } from "react-icons/si";
 import { MdRestaurantMenu } from "react-icons/md";
+import { useTranslations } from 'next-intl';
 
 const Footer = () => {
 
     const date = new Date();
     const year = date.getFullYear();
+    const t = useTranslations('footer');
 
     return (
         <footer className='w-full border-t border-t-white/35'>
@@ -19,7 +21,7 @@ const Footer = () => {
                 </div>
                 <div className='w-full flex items-center justify-center'>
                     <Typographie variant='h3' fontFamily='Montserrat' color='white' className='w-full text-center'>
-                        © {year} AliBaba Kebab - Site Réalisé par Axis Studio
+                        © {year} AliBaba Kebab - {t('title')}
                     </Typographie>
                 </div>
 

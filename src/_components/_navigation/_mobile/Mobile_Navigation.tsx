@@ -33,6 +33,7 @@ export const Mobile_Navigation = () => {
       <div className="flex flex-col items-center justify-center gap-12">
         <CTA
           variant="link"
+          onClick={setToggle}
           textSize={20}
           className="w-max"
           href={`#${tBottom("home")}`}
@@ -43,6 +44,7 @@ export const Mobile_Navigation = () => {
         </CTA>
         <CTA
           variant="link"
+          onClick={setToggle}
           textSize={20}
           className="w-max"
           href={`#${tBottom("menu")}`}
@@ -53,6 +55,7 @@ export const Mobile_Navigation = () => {
         </CTA>
         <CTA
           variant="link"
+          onClick={setToggle}
           textSize={20}
           className="w-max"
           href={`#${tBottom("review")}`}

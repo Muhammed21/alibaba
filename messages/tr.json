@@ -35,5 +35,8 @@
   "review": {
     "title": "Iste yorumlarımız",
     "subtitle": "Müşterilerimizin yorumlarını ve bizimle olan deneyimlerini keşfedin!"
+  },
+  "footer": {
+    "title": "Axis Studio tarafından yapıldı"
   }
 }

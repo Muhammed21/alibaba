@@ -35,5 +35,8 @@
   "review": {
     "title": "Voici Nos Avis",
     "subtitle": "Découvrez les avis de nos clients et leur expérience avec nous !"
+  },
+  "footer": {
+    "title": "Site Realisé par Axis Studio"
   }
 }
