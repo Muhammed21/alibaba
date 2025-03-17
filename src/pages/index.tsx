@@ -2,6 +2,7 @@ import ReviewPage from "@/_components/_avis/ReviewPage";
 import { CountrySwitch } from "@/_components/_country/Coutry";
 import { Header } from "@/_components/_header/Header";
 import { MenuCards } from "@/_components/_menu/Menu_Cards";
+import Footer from "@/_components/_navigation/Footer";
 import { GetStaticPropsContext } from "next";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
       <Header />
       <MenuCards />
       <ReviewPage />
+      <Footer />
       <div className="lg:hidden fixed bottom-4 right-2.5 w-max h-max z-50">
         <CountrySwitch size={12} />
       </div>
