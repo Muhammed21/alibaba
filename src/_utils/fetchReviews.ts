@@ -1,5 +1,5 @@
-import { ApifyClient } from 'apify-client';
-import Review from '@/_types/review';
+import { ApifyClient } from "apify-client";
+import Review from "@/_types/review";
 
 type ReviewItem = {
   name: string;
@@ -18,8 +18,7 @@ export default async function fetchReviews() {
     token: process.env.APIFY_API_TOKEN,
   });
 
-  const establishmentUrl =
-    "https://www.google.fr/maps/place/Ali+Baba+Kebab/@45.899979,6.1240739,17z/data=!3m1!4b1!4m6!3m5!1s0x478b8ffa3c0de239:0x1eea271a733826c8!8m2!3d45.899979!4d6.1266488!16s%2Fg%2F1tdc4379?entry=ttu&g_ep=EgoyMDI1MDMxMC4wIKXMDSoASAFQAw%3D%3D";
+  const establishmentUrl = process.env.ESTABLISHMENT_URL;
 
   const input = {
     startUrls: [{ url: establishmentUrl }],
@@ -31,20 +30,22 @@ export default async function fetchReviews() {
 
   const languages = ["en", "fr", "tr"];
 
-  const reviewsMap = new Map<
-    string,
-    Review
-  >();
+  const reviewsMap = new Map<string, Review>();
 
   for (const language of languages) {
     const languageInput = { ...input, language };
-    const languageRun = await client.actor("Xb8osYTtOjlsgI6k9").call(languageInput);
-    const languageDataset = await client.dataset(languageRun.defaultDatasetId).listItems();
+    const languageRun = await client
+      .actor("Xb8osYTtOjlsgI6k9")
+      .call(languageInput);
+    const languageDataset = await client
+      .dataset(languageRun.defaultDatasetId)
+      .listItems();
 
     if (!languageDataset.items || languageDataset.items.length === 0) continue;
 
     for (const review of languageDataset.items as ReviewItem[]) {
-      const reviewText = review.textTranslated?.trim() || review.text?.trim() || "";
+      const reviewText =
+        review.textTranslated?.trim() || review.text?.trim() || "";
 
       // Appliquer les filtres : texte présent, photo de l’auteur, au moins une image, note >= 4
       if (!reviewText || !review.reviewerPhotoUrl || review.stars < 4) {
