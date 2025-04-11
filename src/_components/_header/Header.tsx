@@ -29,7 +29,7 @@ export const Header = () => {
       </Typographie>
 
       <Image
-        src={"/_img/_pattern/pattern-montain.png"}
+        src={"/_img/_pattern/pattern-mountain.png"}  
         alt="Pattern"
         width={1920}
         height={500}
